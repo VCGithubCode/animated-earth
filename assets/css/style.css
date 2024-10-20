@@ -4,7 +4,7 @@
 }
 
 html {
-  font-size: 62.5%;
+  font-size: 100%;
 }
 
 
@@ -12,12 +12,10 @@ body {
   width: 100%;
   height: 100%;
   background-color: #000000;
-  background: linear-gradient(180deg, #028fe7e2, #4a2e2e5a), url('../images/bgstarwars.webp'), 
-  no-repeat center center / cover;
 }
 
 h1 {
-  font-size: min(1.6em, 2.4em);
+  font-size: 0.75em;
   font-family: 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight: 300;
   background: linear-gradient(to right, #fed0d0 0%, #7a80f2 50%, #b6f7f8 75%, #acc6d7 100%);
@@ -27,11 +25,12 @@ h1 {
   mix-blend-mode: difference;
   opacity: 1;
   text-align: center;
-  padding: 0.5em;
+  padding: 1em;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 3;
 }
 
 .wrapper {
@@ -54,12 +53,57 @@ h1 {
   box-shadow: -1rem -1rem 2rem #444, 1rem 1rem 2rem #444, inset 10rem 0 5rem #000, inset -1rem 0 2rem #c9c3c3;
 }
 
+.stage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to bottom, #1234496c 0%, #263b4700 100%);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  border-radius: 1px;
+  background: #fff;
+}
+
+.shooting-star {
+  position: absolute;
+  top: 0;
+  left: -120px;
+  width: 120px;
+  height: 2px;
+  background: url(../images/shooting-star.png) center center no-repeat;
+  background-size: 100% 100%;
+  transform: rotate(20deg);
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+@keyframes shooting-star {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(20deg);
+  }
+  10%, 100% {
+    transform: translate3d(1600px, 164px, 0) rotate(20deg);
+  }
+}
+
 .earth {
   width: 100%;
   aspect-ratio: 1;
   position: absolute;
   border-radius: 50%;
   animation: earthAnim 25s infinite linear;
+
 }
 
 .day {
@@ -80,4 +124,16 @@ h1 {
 100% {
   background-position: 192rem center;
 }
+}
+
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 1.5em;
+  }
+
+  @media screen and (min-width: 992px) {
+    h1 {
+      font-size: 2em;
+    }
+  }
 }
